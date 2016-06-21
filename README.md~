@@ -14,15 +14,15 @@ javac HiddenMarkovModel.java
 
 After compiling use the following commands to see outputs for different problems.
 
-1. Problem 1
+* **Problem 1**
 
 `java HiddenMarkovModel "obsv_prob" `
 
-2. Problem 2
+* **Problem 2**
 
 `java HiddenMarkovModel "viterbi" `
 
-3. Problem 3
+* **Problem 3**
 
 `java HiddenMarkovModel "learn"`
 
@@ -32,7 +32,7 @@ Outputs will be provided in the terminal, if necessary you will be asked for an 
 
 #Detailed explanations
 
-1. Problem 1
+* **Problem 1**
 
 This part takes observation sequence and model parameters as input from testdata.txt and model.txt files, and then computes the probability of the observation sequence given the model, since for long observation sequence it is common to get underflows, I have implemented forward procedure using scaling which is described in page 272 of Rabiners paper. 
 For an observation sequence: 0 1 1 0 1 0 ,  the following outputs are printed:
@@ -41,7 +41,7 @@ Probability: 0.001484296712034913
 Log probability(natural logarithm): -6.512814213498095 
 
 
-2. Problem 2
+* **Problem 2**
 
 This part takes observation sequence and model parameters as input from testdata.txt and model.txt files, and outputs meaningful and optimal state sequence. For this part Viterbi algorithm was implemented, in order to have less computations I have used log trick which is described in 
 page 273 of Rabiners paper. 
@@ -51,10 +51,11 @@ Optimal state sequence is : 0 1 1 1 1 1
 Log probability(natural logarithm): -7.408067403771226 
 Number of state transitions needed: 1 
 
-3. Problem 3
+* **Problem 3**
 
 This is the most interesting and challenging part. Given multiple observation sequences of data provided in a data.txt file the aim is to adjust model parameters in order to maximize the probability of all observation sequences given the model. In order to accomplish an aim the Baum-Welch procedure for multiple observation sequences was implemented. Initially the model parameters were initialized according to suggestions of Rabiners paper page 273-274 namely  initial state and state transition probabilities were given uniform probabilities. An observation symbol probabilities were initialized randomly. Then the following re-estimation procedure with some optimizations was used in train(dataSequences) method:  
 When you run this procedure you will be asked to input number of states from the terminal, by following message,  
+
 *Please enter number of states:* 
 
 After your input the training will start, and number of iterations with loss function which is negative  log likelihood of all observations will be printed. The training will stop after some convergence(i.e. loss functions doesn't change much). I have defined threshold = 0.0000001 and used the following conditipn to test convergence Math.abs(newLoss - oldLoss) > threshold.
@@ -65,6 +66,7 @@ For the case of two stated the following rounded outputs are printed to the desc
 Number of states: 2 
 
 Model parameters rounded: 
+```
 Pi 
 0.05 0.95 
 
@@ -75,12 +77,13 @@ A
 B 
 0.22 0.78 
 0.94 0.06
-
-Or, 
+```
+**Or,** 
 
 Number of states: 2 
 
 Model parameters rounded: 
+```
 Pi 
 0.95 0.05 
 
@@ -91,5 +94,5 @@ A
 B 
 0.94 0.06 
 0.22 0.78
-
+```
 Which are equivalent parameters just state names (i.e. state 0 to 1 and 1 to zero) are changed. As you can see they are very close to actual parameters. You can get outputs for other number of states too. 
