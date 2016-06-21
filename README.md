@@ -10,7 +10,7 @@ HiddenMarkovModel which contains all necessary methods to solve all three proble
 
 First we need to go to a folder containing source code and all necessary files(model.txt, testdata.txt, data.txt) to compile HiddenMarkovModel.java file using by the following command from a terminal:
 
-javac HiddenMarkovModel.java 
+`javac HiddenMarkovModel.java` 
 
 After compiling use the following commands to see outputs for different problems.
 
