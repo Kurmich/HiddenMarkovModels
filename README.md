@@ -4,7 +4,7 @@
 
 An implementation was done in Java-8-Oracle it consists of a single class called
 HiddenMarkovModel which contains all necessary methods to solve all three problems of HMM. 
-
+For details see: http://www.ece.ucsb.edu/Faculty/Rabiner/ece259/Reprints/tutorial%20on%20hmm%20and%20applications.pdf
 ---
 #How to run code
 
@@ -47,9 +47,9 @@ This part takes observation sequence and model parameters as input from testdata
 page 273 of Rabiners paper. 
 For an observation sequence: 0 1 1 0 1 0 ,  the following outputs are printed:
 
-Optimal state sequence is : 0 1 1 1 1 1 
-Log probability(natural logarithm): -7.408067403771226 
-Number of state transitions needed: 1 
+Optimal state sequence is : 0 1 1 1 1 1  
+Log probability(natural logarithm): -7.408067403771226  
+Number of state transitions needed: 1  
 
 * **Problem 3**
 
