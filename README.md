@@ -3,8 +3,9 @@
 #Overall structure of an implementation.
 
 An implementation was done in Java-8-Oracle it consists of a single class called
-HiddenMarkovModel which contains all necessary methods to solve all three problems of HMM. 
+HiddenMarkovModel which contains all necessary methods to solve all three problems of HMM.  
 For details see: http://www.ece.ucsb.edu/Faculty/Rabiner/ece259/Reprints/tutorial%20on%20hmm%20and%20applications.pdf
+
 ---
 #How to run code
 
@@ -37,8 +38,8 @@ Outputs will be provided in the terminal, if necessary you will be asked for an 
 This part takes observation sequence and model parameters as input from testdata.txt and model.txt files, and then computes the probability of the observation sequence given the model, since for long observation sequence it is common to get underflows, I have implemented forward procedure using scaling which is described in page 272 of Rabiners paper. 
 For an observation sequence: 0 1 1 0 1 0 ,  the following outputs are printed:
 
-Probability: 0.001484296712034913 
-Log probability(natural logarithm): -6.512814213498095 
+Probability: 0.001484296712034913  
+Log probability(natural logarithm): -6.512814213498095  
 
 
 * **Problem 2**
