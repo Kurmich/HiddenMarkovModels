@@ -1,13 +1,13 @@
 
 
-#Overall structure of an implementation.
+# Overall structure of an implementation.
 
 An implementation was done in Java-8-Oracle it consists of a single class called
 HiddenMarkovModel which contains all necessary methods to solve all three problems of HMM.  
 For details see: http://www.ece.ucsb.edu/Faculty/Rabiner/ece259/Reprints/tutorial%20on%20hmm%20and%20applications.pdf
 
 ---
-#How to run code
+# How to run code
 
 First we need to go to a folder containing source code and all necessary files(model.txt, testdata.txt, data.txt) to compile HiddenMarkovModel.java file using by the following command from a terminal:
 
@@ -31,7 +31,7 @@ Outputs will be provided in the terminal, if necessary you will be asked for an 
 
 ---
 
-#Detailed explanations
+# Detailed explanations
 
 * **Problem 1**
 
