@@ -2,7 +2,7 @@
 
 # Overall structure of an implementation.
 
-An implementation was done in Java-8-Oracle it consists of a single class called
+An implementation was done in Java-8 it consists of a single class called
 HiddenMarkovModel which contains all necessary methods to solve all three problems of HMM.  
 For details see: [HMM](http://www.ece.ucsb.edu/Faculty/Rabiner/ece259/Reprints/tutorial%20on%20hmm%20and%20applications.pdf) 
 
