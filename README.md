@@ -4,16 +4,16 @@
 
 An implementation was done in Java-8 it consists of a single class called
 HiddenMarkovModel which contains all necessary methods to solve all three problems of HMM.  
-For details see: [HMM](http://www.ece.ucsb.edu/Faculty/Rabiner/ece259/Reprints/tutorial%20on%20hmm%20and%20applications.pdf) 
+For details see: [HMM](http://www.ece.ucsb.edu/Faculty/Rabiner/ece259/Reprints/tutorial%20on%20hmm%20and%20applications.pdf)
 
 ---
 # How to run code
 
-First we need to go to a folder containing source code and all necessary files(model.txt, testdata.txt, data.txt) to compile HiddenMarkovModel.java file using by the following command from a terminal:
+First, compile HiddenMarkovModel.java file by the following command from a terminal:
 
-`javac HiddenMarkovModel.java` 
+`javac HiddenMarkovModel.java`
 
-After compiling use the following commands to see outputs for different problems.
+Then, use following commands to see outputs for different problems of HMM.
 
 * **Problem 1**
 
@@ -27,16 +27,15 @@ After compiling use the following commands to see outputs for different problems
 
 `java HiddenMarkovModel "learn"`
 
-Outputs will be provided in the terminal, if necessary you will be asked for an input. See corresponding parts of the report for more details.
-
+Outputs will be shown on the terminal, if necessary you will be asked for an input.
 ---
 
 # Detailed explanations
 
 * **Problem 1**
 
-This part takes observation sequence and model parameters as input from testdata.txt and model.txt files, and then computes the probability of the observation sequence given the model, since for long observation sequence it is common to get underflows, I have implemented forward procedure using scaling which is described in page 272 of Rabiners paper. 
-For an observation sequence: 0 1 1 0 1 0 ,  the following outputs are printed:
+Observation sequence and model parameters are taken as an input from testdata.txt and model.txt files respectively. Then, the probability of the observation sequence given the model is computed. Since it is common to get underflows for long observation sequences, I implemented forward procedure using scaling which is described on page 272 of Rabiners paper.
+For the observation sequence: 0 1 1 0 1 0, following outputs are printed:
 
 Probability: 0.001484296712034913  
 Log probability(natural logarithm): -6.512814213498095  
@@ -44,56 +43,52 @@ Log probability(natural logarithm): -6.512814213498095
 
 * **Problem 2**
 
-This part takes observation sequence and model parameters as input from testdata.txt and model.txt files, and outputs meaningful and optimal state sequence. For this part Viterbi algorithm was implemented, in order to have less computations I have used log trick which is described in 
-page 273 of Rabiners paper. 
-For an observation sequence: 0 1 1 0 1 0 ,  the following outputs are printed:
+Here the model outputs meaningful and optimal state sequence which is inferred using Viterbi algorithm. In order to decrease number of computations I used log trick(see page 273 of Rabiner).
+For the observation sequence: 0 1 1 0 1 0, following outputs are printed:
 
-Optimal state sequence is : 0 1 1 1 1 1  
+Optimal state sequence is: 0 1 1 1 1 1  
 Log probability(natural logarithm): -7.408067403771226  
 Number of state transitions needed: 1  
 
 * **Problem 3**
 
-This is the most interesting and challenging part. Given multiple observation sequences of data provided in a data.txt file the aim is to adjust model parameters in order to maximize the probability of all observation sequences given the model. In order to accomplish an aim the Baum-Welch procedure for multiple observation sequences was implemented. Initially the model parameters were initialized according to suggestions of Rabiners paper page 273-274 namely  initial state and state transition probabilities were given uniform probabilities. An observation symbol probabilities were initialized randomly. Then the following re-estimation procedure with some optimizations was used in train(dataSequences) method:  
-When you run this procedure you will be asked to input number of states from the terminal, by following message,  
+This is the most interesting and challenging part. Given multiple observation sequences provided in the data.txt file the aim is to find model parameters which maximize probability of all observation sequences. To solve this problem the Baum-Welch procedure for multiple observation sequences was implemented. State and state transition probabilities were initialized from uniform distribution. Observation probabilities were initialized randomly.
 
-*Please enter number of states:* 
 
-After your input the training will start, and number of iterations with loss function which is negative  log likelihood of all observations will be printed. The training will stop after some convergence(i.e. loss functions doesn't change much). I have defined threshold = 0.0000001 and used the following conditipn to test convergence Math.abs(newLoss - oldLoss) > threshold.
-So when difference between two consecutive loss functions becomes smaller than a threshold the convergence occurs and information about the model is printed to a text file called HMMdescription.txt.
+When you run this procedure you will be asked to input number of states, then training procedure will start and information about the model will be printed on HMMdescription.txt file.
 
-For the case of two stated the following rounded outputs are printed to the description file:
+For two states, the following rounded outputs are printed on the description file:
 
-Number of states: 2 
+Number of states: 2
 
-Model parameters rounded: 
+Model parameters:
 ```
-Pi 
-0.05 0.95 
+Pi
+0.05 0.95
 
-A 
-0.92 0.08 
-0.04 0.96 
+A
+0.92 0.08
+0.04 0.96
 
-B 
-0.22 0.78 
+B
+0.22 0.78
 0.94 0.06
 ```
-**Or,** 
+**Or,**
 
-Number of states: 2 
+Number of states: 2
 
-Model parameters rounded: 
+Model parameters:
 ```
-Pi 
-0.95 0.05 
+Pi
+0.95 0.05
 
-A 
-0.96 0.04 
-0.08 0.92 
+A
+0.96 0.04
+0.08 0.92
 
-B 
-0.94 0.06 
+B
+0.94 0.06
 0.22 0.78
 ```
-Which are equivalent parameters just state names (i.e. state 0 to 1 and 1 to zero) are changed. As you can see they are very close to actual parameters. You can get outputs for other number of states too. 
+These parameters are equivalent.
